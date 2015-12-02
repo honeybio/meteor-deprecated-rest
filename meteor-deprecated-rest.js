@@ -1,7 +1,6 @@
-// Write your package code here!
-restGet: function (ip, user, pass, url) {
-  console.log('deprecated');
-  this.unblock();
+
+mdrRestGet = function (ip, user, pass, url) {
+  console.log('less deprecated (mdr package)');
   var requrl = "https://" + ip + "/mgmt/tm" + url;
   var authString = user + ":" + pass;
   try {
@@ -10,9 +9,10 @@ restGet: function (ip, user, pass, url) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestGetv2: function (onDevice, lurl) {
-  console.log('deprecated');
+}
+
+mdrBigipRestGetv2 = function (onDevice, lurl) {
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
@@ -25,9 +25,10 @@ bigipRestGetv2: function (onDevice, lurl) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestPost: function (onDevice, lurl, postData) {
-  console.log('deprecated');
+}
+
+mdrBigipRestPost = function (onDevice, lurl, postData) {
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
@@ -40,9 +41,10 @@ bigipRestPost: function (onDevice, lurl, postData) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestPut: function (onDevice, lurl, putData) {
-  console.log('deprecated');
+}
+
+mdrBigipRestPut = function (onDevice, lurl, putData) {
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
@@ -55,9 +57,10 @@ bigipRestPut: function (onDevice, lurl, putData) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestDelete: function (onDevice, lurl) {
-  console.log('deprecated');
+}
+
+mdrBigipRestDelete = function (onDevice, lurl) {
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
@@ -70,11 +73,11 @@ bigipRestDelete: function (onDevice, lurl) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestGet: function (ip, user, pass, url) {
-  console.log('deprecated');
+}
+
+mdrBigipRestGet = function (ip, user, pass, url) {
+  console.log('less deprecated (mdr package)');
   // console.log("deprecated rest get bigipRestGet");
-  this.unblock();
   var requrl = "https://" + ip + "/mgmt/tm" + url;
   var authString = user + ":" + pass;
   try {
@@ -88,10 +91,10 @@ bigipRestGet: function (ip, user, pass, url) {
   } catch (e) {
     throw new Meteor.Error(e);
   }
-},
-bigipRestGetItems: function (onDevice, lurl) {
-  console.log('deprecated');
-  this.unblock();
+}
+
+mdrBigipRestGetItems = function (onDevice, lurl) {
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
