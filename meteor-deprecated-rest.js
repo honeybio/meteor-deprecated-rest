@@ -39,6 +39,7 @@ mdrBigipRestPost = function (onDevice, lurl, postData) {
   var authString = user + ":" + pass;
   try {
     var response = HTTP.post(url, {auth: authString, data: postData});
+    console.log(response);
     return response;
   } catch (e) {
     console.log(e);
@@ -47,7 +48,7 @@ mdrBigipRestPost = function (onDevice, lurl, postData) {
 }
 
 mdrBigipRestPut = function (onDevice, lurl, putData) {
-  //console.log('less deprecated (mdr package)');
+  console.log('less deprecated (mdr package)');
   var device = Devices.findOne({_id: onDevice});
   var ip = device.mgmtAddress;
   var user = device.mgmtUser;
@@ -56,7 +57,13 @@ mdrBigipRestPut = function (onDevice, lurl, putData) {
   var authString = user + ":" + pass;
   try {
     var response = HTTP.put(url, {auth: authString, data: putData});
-    return response;
+    if (response.statusCode == 200) {
+      console.log(response);
+      return 200;
+    } else {
+      console.log(response);
+      throw new Meteor.Error(response.statusCode, 'Error', response.data);
+    }
   } catch (e) {
     console.log(e);
     throw new Meteor.Error(e);
