@@ -8,6 +8,7 @@ mdrRestGet = function (ip, user, pass, url) {
     return result;
   } catch (e) {
     console.log(e);
+    console.log(requrl);
     throw new Meteor.Error(e);
   }
 }
@@ -25,6 +26,7 @@ mdrBigipRestGetv2 = function (onDevice, lurl) {
     return response;
   } catch (e) {
     console.log(e);
+    console.log(url);
     throw new Meteor.Error(e);
   }
 }
@@ -39,10 +41,10 @@ mdrBigipRestPost = function (onDevice, lurl, postData) {
   var authString = user + ":" + pass;
   try {
     var response = HTTP.post(url, {auth: authString, data: postData});
-    console.log(response);
     return response;
   } catch (e) {
     console.log(e);
+    console.log(url);
     throw new Meteor.Error(e);
   }
 }
@@ -58,14 +60,16 @@ mdrBigipRestPut = function (onDevice, lurl, putData) {
   try {
     var response = HTTP.put(url, {auth: authString, data: putData});
     if (response.statusCode == 200) {
-      console.log(response);
       return 200;
     } else {
+      console.log(response);
+      console.log(url);
       console.log(response);
       throw new Meteor.Error(response.statusCode, 'Error', response.data);
     }
   } catch (e) {
     console.log(e);
+    console.log(url);
     throw new Meteor.Error(e);
   }
 }
@@ -83,6 +87,7 @@ mdrBigipRestDelete = function (onDevice, lurl) {
     return response;
   } catch (e) {
     console.log(e);
+    console.log(url);
     throw new Meteor.Error(e);
   }
 }
@@ -102,6 +107,7 @@ mdrBigipRestGet = function (ip, user, pass, url) {
     }
   } catch (e) {
     console.log(e);
+    console.log(requrl);
     throw new Meteor.Error(e);
   }
 }
@@ -124,6 +130,7 @@ mdrBigipRestGetItems = function (onDevice, lurl) {
     }
   } catch (e) {
     console.log(e);
+    console.log(url);
     throw new Meteor.Error(e);
   }
 }
